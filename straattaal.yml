@@ -1,0 +1,14 @@
+services:
+  straattaal:
+    image: raoulgrouls/straattaal:latest
+    container_name: straattaal-demo
+    restart: unless-stopped
+    networks:
+      - traefik-net
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.straattaal.rule=PathPrefix(`/straattaal`)"
+      - "traefik.http.routers.straattaal.entrypoints=web"
+      - "traefik.http.middlewares.straattaal-stripprefix.stripprefix.prefixes=/straattaal"
+      - "traefik.http.routers.straattaal.middlewares=straattaal-stripprefix"
+      - "traefik.http.services.straattaal.loadbalancer.server.port=80"
