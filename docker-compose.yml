@@ -1,5 +1,6 @@
 include:
   - ldviewer.yml
+  - straattaal.yml
 
 networks:
   traefik-net:
