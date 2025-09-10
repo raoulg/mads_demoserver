@@ -3,6 +3,9 @@ services:
     image: ghcr.io/bramvx/ldviewer:dev
     container_name: ldviewer-demo
     restart: unless-stopped
+    environment:
+      # This is the correct variable for this application
+      - PUBLIC_URL=/ldviewer
     networks:
       - traefik-net
     labels:
